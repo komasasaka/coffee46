@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>4：6メソッド 計算ツール</title>
+<meta name="theme-color" content="#5C3D2B">
+<meta name="apple-mobile-web-app-title" content="4:6メソッド">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- ホーム画面用アイコン。外部ファイルが無い環境でも使えるよう、data: URI 版も併記する -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAQAElEQVR4nOx9CbhVxbHu34vDLKIogoiI4oAiiqioOOAQR1ScEzVqjOa+JCbEm5v3vdzkXs1N8uVmMBiNMRo1ccAJhzjPGucJVJxwQBxRFGdlFM7pt85eq6urqrvX3mfAkf6S5dl7r9Wrqrrqr79q9d40/e7Y3Ywx1lp1bMmPMBa1Y+s7sBa1Y/kfFGeyc8T77PzkOcX7tb/hhpbEXduiJWTywOTXAVoLeS+U5wXnhPeqvV9eoM9P3MvL0yLnFNcWo1F7urcDeerYXOjbEpOkQXkypTkda7OXx5pMKI/uRXkm3LFm+OLI/gSfE2w9UMwMlFIWorZexSUBzV/6WekNKC8q5mcy8PnpJO8ZradLGayzMskDvxJQ8peCtn5Q+hkCeaT15bWl/7OV8PaEt7mRNvf2CfWN2dwyc8JE5JFzJtY3P2bRmIBY3fKFWK2aTeGOzi7+HOMlED5Bfk04UR6NO9asU0oCCHncOYDwLePlgfN6Zx3vAfxe5Nnki2R9KQ95Q7nGTJ7iVn4V2L0ItwpfBPceOsfr69fbSnmEzUurisgsfZH5LIsKLQ+Mwwnw9TJysa33AdMkYwIuRsmPyugpY1rHKAJPcisKt06EQ1zi0jUKvy4sAolGzMOMwIlSHh9hRkYDkwcKJ1x02iROkJ9xSeD0jeIWPLZFJPG4ZTyukKaEFtojKay4zX2+C3DLL5TPMiyu/OfQ6+slKbVgkmTORnCeqzFA+KBfqIZ8togbZ3wjjcYszlCQeZvMtVDyePRyIeEtFcEtEZ2QOKEwT9rLTwOeHZjdvT8ZY8DXgXsqGdeo9SbVGZYYUE43HPQbtHmJE0J+SNxioW+kFnQpMp2rfKgYmf8ETiDts2m/1rmWezdEjNJqGUTlgcQh0t8YiTFBdLL5GU4Q5llU6QtntporpnO51fxGywPUxS1tnxB3pc1hEvZM2LxKX7pBZlkuV9HJYsjZ3ZAilP+Y5+pc7oXkPmsjPgsIV4awoA3kAXcbkC/CWhl/UbSA4jeWfUDyGAZJQke2WjKXe2PEcAs8l0NYJopb7FpjrA9mbU/vf56rQaGF5Gqaibu33fnM5k08zgzL92RBuon/E84HDbHRqlxegRPeL5V/pHHL3dFHscMMhhNKHg7MkPJALKlC0BIlAFRwfsrLMpenccuLLuShlTOIWZUMU8MYw7mRtLxfFtIUglXEcJEtV8kXOedQfm28ngxRBFpwvzZxnEASJ0Qu504RwQkLnmu51Th7Yrk8hltJfhNwfiPWIoETOpcXljGCqzEckkDHcIJ7vLNnIY9ACxta1Th9lTwCJwJ5HO0p5SF7Kl8sTsr8lSDG5HEiyMc0VxBDSc4P+sA0wPn9Skvzs+khamOgzbhFcyp5wKMtpiOzp8IJOp9ybjV3Sds8XoNU4xYQ2JNwy8g5efTG7MntkzFA5Nom/LqMLarxIO7Hc7nhbJy0oorO6eOjk6oPsDzNtLc2UYOEOCHkMeSdCicMizNvX4ETrvowShLyLVjiaqpXAXZbVn1Y36vQ8tBqBR5QF7fIXxHkAWsdrlNNB5u0p2GdiFbO4TMcNKuAFd1Z7bPlcNyNR5vHjBhOQLAK5rPe7tyvS2N6VsFjFBInEGcVxsV6CrfK802iQ+Cn92vJ0SLgauAQwyTxvXC9QswwRcRX4US0BinnVLgFIY91dZ+SROCWw6Es9FlYEc3eM+BzJ/dZ63O5yw7K+spnvee66LQ2OEfK4ypblTuZDFC5XEan834jPDsanYSLVpwD4jcKLSI9VuPgGCQPp8QmZnMpj+ObzmsTNmcA5XFC4Za2ubc85zdRm2ehz1b3KhDzWeXXMh/rGBK9img+5jHtJgpyOec3CLhRVb4n50j1KmL8RshDXkjHQMeIfcRR21xiDJsfHetVsP4QOJ8zlbhVHDNuNroykcvr+Cykz8IKnwWLznKFPL+ByMcsT0PkcoFGdI7xKyRjyKlZjMgK2Xb2KkT1Qf7KcEJfW1KpUlMoSRrvVQibM/QFd+fA5hzLGZ9jZWJMntZnK53Zq/Bawfl1R3sVTBL3YZRVeK8KmHnpHGYZ9ipkHNuQVbCVRukm7elVuDVN2xxlVMOGNUgMJ+Dc1oa4lXmccLkHKs4Y5zcxnCijk1tZ+yzVIMynrI2hRUd7FcbFKAIP4J5ReItYMys8DAwnyAPYbf05kquxHCR7FdojjZMHEXl0rwIxeVyvAmDyeA/wlYQzoaEpQ0kokpkLg/ociOQq6Ufl9bRCOjqX76ug6EQYox3ZV5HQkc1vkepVMBlCrha3OcmQlXZSfiTyn6t9vc8yv2a+tXxfBSBwAnHcCmoQwmbL8pHERdGrkJKwa51/FPODTMIkkevrcT3ALVM8W3H5D8v3VWiPJHvhs9xXoeUp154k0ayCMSSBu5FsEGAe2dNxjmQuh48hYqYSLeDRwrqQ8JaKcf7ok1LLY8h5pLSX9Gu4wezu9f+S7asQUeRwQvQPU70KMJwwrB8Y4BYEIpYfZLFcTjFKVxr2NqtBxNrwaY3EmCA6Ec1/3mcld0ECJ2qumM7lVvMbLQ/q4xaUfdT8kDiBgKspnOhwr0LUIEncAsctCHkExiBt89bzM+mz/nJyQu6zznNZ7hQUHjbaqzDL91WUOGG9CTQTp16Fc4yEzYUuYNDDvdaqHisouig0wHKFtnkRbwXnWL6vIowh9pZNdwg+nX0VqgaJSpLqVdCkTCFheZAnGag8kLHwEE4R81lU9Cq8nh3uVcApyy2QwAmdy8t8LPI0iwkJdAwnuMfTeiBAC+mRxsmDiDy6VyHlcbSnlIfsqXxR4QRCe3LLI+xVkNdGazrGckpIEs+VMkhvQiz3cPOz1IzK/OdjlKGlzMc0J3kMj4ng/BAnINFIaEurjiruwnOtwq1oDWLtZ7Cvgtk8xY20za33fhOuL5L9KuufVdWcg83rLUs4Ia2T9Ovl+yqY/A7zqnoVBrz60PaUvQprpTyKG5XqcUl8r0LZEwGfo8F0LP9u8qzC2rBXIXCiNCZjRixGEfFrGc3sg5jPgll8+b4K3nchY3NWAd5TKGMjZBVJnPCWB9NX4VZmeW/AWu3XLIZgRW4Dy53ifjKXy+i03K9Dn4VEC57//LUuehRafIn3VXi0SPAbwuawV6FxK2Fzdy+fB1D7xhu7N7j3ecwXuVPHBM9/0Jxf4sQqAwevPWJ0n779EAxRzaaGZSDm3kD9C0Cau5hW07RhWIHGbP4GZhVnNCSEhccCLJw/b87LL7zw1CO0SEatl7Z5FPPKYSL8Rq9vrZQlRHI+W/0NdCPCD+ocFpeWfwP94OP+e+Ntdsby0bHx3GMPTf7TCQs+/tgIDzCEW/I3BBwWypWN/M6AqFlKlOqy06ZrBx7tAcGELs6qD/e+PEt/2joO/sEJyz2jU8aqqw9eZcAaj99/R+0VtzyL22C4VojwJEDiqFEvkLH8xzNcZ+6rGLDmOhtvvROWj04am47dedDQYYDjf1Z4hqFEWhyJGzkWBdhEj1XwRbSWskbXKZ2+r2LI+htj+ejUMWS9EajaW8ORPN5bcmwSPPLhaqjimFkb9iosnc14u+DkIJwA80GBJYLzY/no1JF1aVI1SBwnik9YHoCsoXzFJ/oupT80sfo+ghOdsq9i5uMPY/no1PHijOmqBmmgx+rXl6GF0bnCVc6o9TngGnpspVUPziq0YJzWDSYrZ7+tc78/940XnpyG5aOTxnPTH57zyiwIm3PWKHoVLI3InIJwfSH6F63fW9G9imWyr+K6f5y8dOkSLB8dHksWL55y+v+WLwK+WNGLsgFfTD9XKt9oalOvglW86lMT1NyELq3Hd9+cfduUs/c47HsVar/+4rOzX3jGqvqM1cPx4XAu8pt5dbtqbIbw6PS1nKMZiP1UQjp1LT+iETlax5D1R6w5bHjFCTdceMb7b79pXUdb9ypAz3sd29OfBh0O3q+CeJbSxPqhjFUIP2JoQTLWez5ZwAr32fuvn7Lp2F1XH7puSu28f3rN30/5ZOF8q42deC0/SHmDtUhU/xa6SVRxRmSi9JRkycikFR7fo1fv0TvsjvR45fkZd117CYt+IxgoOCsAyxTWxPIAqnqsBvT7HCWLJFaxDPZV5GPKab9sbm5Oad6j1wq7HHSUkIdzbBatUB5JyIGIPGpfBThZ50q6P4WO5PFW9AYQ9n6YJHDxx3xAPjdhWnO77XbIMT17r4DEaG5eOvnkE1z1RzVIMSerMYkDUN3g/IPr62tMriP3ueL3OTynVTWIl177KSROIJ3beP57+41X/nXluUiP9UdtPXTDTWlOkTu5h3ZgX4X3DyvcQaxcZ+2r8NJI+dkgVF9no1Ebjt4G6XHzpee8M2e20peikfu6kCfOFyn2Sn05LtL8mccJ3lcHojjR8X0Vd1994dzZL1eYYLevf6dbj14izgIPqItbcEZiK0L+4XCivBTqSWk5Ubv3Vbj7gXmbcdpJOelW6Na9516Hfxfp8eZrL912+fkeQUm5iM2haxCuevkpxwlYpi+YAtmnvK+ipbl5ymm/amlJJpdeffqO2+9wSJxAPZyo2FfBsS3EDOt6gp2zr8LjPOS9yyHl9MevHfSt3n36IjFyo10w6QTb0hxIUhpI29z5LvTKupwI67QQUeGsWs6f+deJ6Oz0fRVzXpl5zzUXIz1GbLnDmutuJORp+74KHyzl0b0tLeisQ3kE7dlXASCKFuwDjhPM5K1vrbX+iJFb7ZC2B26/8oI3XpppqVdhmDwhTsheRYkTUB7gcTH1HWlT+30Owjx8ar9Xcftlf8+L2wpz7HHY/+natXtqL3XFd0DAiAAEEjB52vt7FcKybFKTQgvBw8SRRtfuPfY+4vtIj7fnvHbTpWezedrWqwCrQRL7wXgki/mzylzO/F3EkJTMWrGrGxC9+th3QJpbll76519aZSc2Vujbb/t9D7V1vwNS3pKbn3NyJo/wdeMzafz5pLSd5DeA9B7pGdpuhP+IfQzsvN/hfVbqlzBD690vmHRi85IlIU4YjxOWqU7nsPVi8ZPcD+b8BnDVENy/mgDlR6S/rEHoheE44etmZxEXx+Q9LP+Vfj171rP333gZ0mPTsbsMWnt9yrIyTzeKE27l9HfFioliOFFcwFmFxi2kcIItvWIVUFHgXGbw2utvtv2uSI+7rrnk1ednoG29CnBWgfr7waDQCE5fzjlinN+K3Mb91KhcXuGzjsdZvp7W3nzx3/JmX4Vp9jr8+01NXW3Yq5A3dn8avwYGIieSgwe9CppMxRAivYr6OAHmGSaNFsXHTV2b9vnWD5Ae782dc93kv4KhHfUqrA0gkq+rt7zh3uAxhuOo4Tqx/hDcTzAU16pcrnCCfe/NWx88muvkPyvsa8ySTxbnlUuFdVbst+rYvQ4OcQva1t76/s9Er4LJ4HVBQ70KfaSRqkHUWUr+cfse2rdff6TH+ZNOXPrJJxwnWGQGEMmEUPyJyWlshKtJfZmYWehHpRy0+iZ4sQAAEABJREFU0r5X4R1VzSjrZsf5q/y6uJd5+dknHrr16goDbT5uz4Frrg1244KCi16FlMSq55OyVyE8yTK7616F7ml6IAidM1aD6CN8jZP/f/W11t1ixz2RHvfecMXLzzxhmb7+T6evsifEvhyuaLC+TjPlbVQNFe9nxrA4Yx0CzyrY2fCYY6T3cJyo4vzCW2vHGy74y4fvvZ2yUe5Ae33zuKxLBqUEl6dcS6uxNOxVgMzGcSLCKuBqEIRo0QhOJMCkkCTr0iVPKCa9B+qDd+defd6frY1wNdLX44SqPjjaJXACFEsRODZw65t5CYxabzcJxxLjorPzfq/ik8ULp5z2a6THyv0Hjt39QB7Cwgr0HId7RqpXAYYTRjxfDf2gRAv2VhtwQsaxyuXb73VQv/4DK1Se/KdfLl64ELJXYVWvwudNKD+L44RhuO74li1LE2FPZ9Xa73Nw5+G5h0zH8jF0rhI+C0DlP5iYz0Lym1lPPfrInTdWGGvLXfbpv8YQuoF4ei6eWSdwS7HRqDxeXUhdwthqBCc4VwPP5f0HrbX1rhPSuuKh26+b+fjUer2KWA3ChI7oaCv2nBrJKctjxmoQo6NE1CC6V6GqD3eV8mvU71XULr7mH6fM+/D9lL2yLNvriONMlnG/tgK3Sm8g7BW4Bat6rIDyHuEZUZwwjZAOwypJv7oMNIyZcPQPc3VSmn78wXtXnPVHIMAJ3avw7mk5Ilqq6TgiGimmpQVj6GtCfuN+TdDXzUDUZ22Y/xRaFCJJzm+5BIleRU2QRQvnXXb6b5Aeqw4cPOZr+0ZrkKgkHepV1GEVxIitxl1bZ1/Ftrvvv+rqgyvUvPDUXy1asIDVfTFWwYHL+0q8V2G833jLF8JptGCqFkud8cCxakanIuW2AC2kxIR47vOkzwreUGaEZx994InyuzrxMXb3A1ZaZbWwVwEgwC0Xbe3aVyHRwkZOYukaDe+ryP17uz0PRHo8es+tM6bdD7XSpuQHTgTLBPE2B+dPQkzP4ll9rvg4OTB43ad/nyPdq4jXILbe81I1PwWU25cmtL3yrD8s+PijlO1ykj/+yOOwjPdVBGhhmGuJk6TWtHI0hZAn70VP+NYPcxUSymH+xx9O+evvk/N7EQqbu/ViaBHtVTCbQ3A15jea3ziPyezn6fcqFs77+KpzJiE9WtsDO423VsqjuJHHLSicYPEXOSZrECNOcpjkwwfsBav4wLiaGbPz3gPWHFqh2uVnnpT7B2L7Krg9eTRC2TOUR9gcAi3A3Vhxo5JFZEBkN4NN9yqW9e9VTL/vtmceub/CiNvudXDeOS18F529r0KMyl4FRCiBWEV0X8XKq662477fQHo8PfXeaXfdbLRVFfupqPsUq3DyxGoQr4WVlmEsqpAk8yrGexWAiFHB+W3cr5Hwa9k7kRY0zK+nnP6bhfPnpezYtVu38fkzbuPk8YjQ0X0VkWO6VwEWqgK3HIb7XG4x4eiJXZqaUhrlyk4+5VcV+yqi9lR8jjtFiBO1S43wBqapWF8QLhb/xhs/g+5Qxg0odyLg/BX7Kjh3kT5b3qBiX0Ve01533qlIj8HDho/a9muRGEqhhcjBjeNEslcRxnGaq2GLcbsPSu+5z8eVZ0/KVVY4Wo0TqV5FwubMD/T6epxguaI8ZhbsMUXoR7axXkV5R53bWP4DGE5A+HVhcdGrePj262c+UfUluXETDluh70oI/CBVgxBkimFjYEK9Cieb6lUonKjeV9Gn78o7TTgsrQeee3zqg7ddp/iT2lcR4oS1islxm4tehbNM4CVW8adI3ceqFZRu0p5ehVsXI31W3A9o076KS/78q8ULF6Rs2q17j/Hf/L5Ns4qYtPJjiCzruZGN40TAKhraV7HPUcd169EjoQRyBS+Y9AsA1fsqYqxC9ipsyOSYPHAzG6o2IjhBy2hdrtA7wSB6FaUJ4z4reAOLM8NrP44TsGTsBvZVfPT+O9fXdjOkxlobbLzJVuOUNyACBPKy8CRYxHusAgOgo5PjBNi1fv5Nttlx7eEj0xrg6nNPy5+xAQwtwNGC4RatnLQ5+wYbOTBY34VjniFW4feDCZuX+rpM6naCVfTq03VzkKv4nWghOrCv4v6brnh15owK4+58wJG9VliRXjZUg6QISBRjVG8gwMUk5zemV+8+ux50FNJj1ozpd19/eYy7pHCrSh6NWyL2ePR6FIC2OelSYlJmK3oV7q78tlW9CqYb+Y30WTi85e7DLO74jcMYXPinXyxdkvwGdveevfY87LsI0MKPiJtYzskhayg4GXz8JZ47OMNaoUWpS+v5ex/5/R49e6Uk/2TxonP/8N90Y+VtZHOFW1IewjZwm4PbvHi/QAtvE8RtTunfze+rFVouE+PkLMPJeS3HGACdtK/CGendObNvvOhMpMe6G282fLNtkMKJur0KeMwI5IFiFQCsbWhfxYgtt1tv5OgKsa+bfEZtiyStXwhnpi5uQUpS4LSXh/urW13FKnycM2ii+TNpNKe/TLw0i3G1u7uH8GtT2p15Rjv2VdApbv67rr349ZeerzD0bod8u0ev3kAMJ6yt06sAQwto3HIWd/I0tq8iF2aPr3+7QuDZLz53xz8vcrHnAkFgc4gTDLcq7GkVfzIs4bEcVOprFG65bFCzlHE7wTrcq+A2CutmukiyUe+5MqYF57e2xV548onNzUtTtu7Ze4Xdv35MqZDGCYPO6FVweUoEJeZuxVrmx70O+07196HzhGJtG/ZVaPuQPat6FUA9fVWuCOXJrNxXgXSvwjlGyq8t2rGvgqTh0Wl4Lm89/63Zr9xy6d+RHhuO3mbYiFHeM+rtq/D5mPcGEO9VSHxWfMuSDMXfw0ZsttHmYytEvfGis+a8+lJ1ryLkN9LmHC3q9Cose8Yp8wAQ1qFyfTM6r1yJdK/CJZOipxmpQTROlBcYRFmFm9Ryzs+8G+RJNUluv+L8N197qcLoex3+3e49eoFZkDwDgvO7/BjgYgVOhKyCjs41Wn2lW/ee+x5Z9fW1Oa++ePOU80hTb3NU7atw9MwIb2isVxGyiooeK2QeyASikjSuVxH6LIs/w7wh7rNOW7evwtKkjJ8b5is6OgnxTHPL0smTTmxJ/7xH7z59dznoSJAH070YJ3f1F6EFnaMwjwzG7NvAvoo9vnF07xWrvg/9j9//V4ttjvYqPL8BJAcKbU69Lz+5sjn1KhTaQeIEoHxd5IGMMEdrC89YUr0K48/xPgtfN5vQrxliG+WzpefG/bp1ttdfmnnHVZORHptsvWPtBzrhNUQgT5zz+9gq9CUTStuBliPcVzF0g5G5ABXi3XL5ebkKmqshjVveSoI4aJwIdYxwozhOOJvH1zezFuG+CqRwQvYqLMvlwuJ8X4W4HWT+i/gsW5Ry8Nx508VnvT2n6hvYebu6a9duTgsTr0E8vwFxVYYTsExfJwTXguTxzK5r9x4TvnVchWBz33jthovOYhjMaigOYRGbO67G7MkomcdFZvNKe8YRmjzPa8r6HCQSePUhcSKaywWrYH7tprMhq0jihPdukBGYXzcvzZPLCSLZy9FnpX4773+EtTa6rwI6elxOJFYho8LfSECJ4E/FHLseeMSKK6+Skio/89w//Ffr7ykGNYjsmjDcgpfHW0azCimPsLlGCxqi1xDgossVrVdlyoKG+zXbN4qIXzM9TXzfqMx/fFkU5xd2VEcfQ7U4e3XmM3ddeynSY/QOu665znCPE5TLyzdK3IrUIMUO2cb2VYDpu+aw4ZvvsFuFSP+66uKXn3savAbxMepdVeBWiXyo16so5fF+YDxaGAMdIQ7zvMsYxkXk+mYV+ypstFcRyccxLhLn/Ej5LI1G/h2Q/IHce3PnID32/dYPmrp1JSHq9SqiHkkKRXCCH5u6dt3v2xMrhHl37pyrz/sLICAras/A5h4tvH8n5En1KjT/C2zuvM3PTy8yeSXq9ypYHBerCX8ti86IXxNOeNLPo0f7dXpfxZLFiy44+USkR99V+o/b5xuSA/EYbQC3nN+gyDgMJ+St7M77HbbSKlXfh84rlCVLFjtbiChS9rQl5penIsCtdvQqrPV8sya+sdLyhhlXcjWThU9AIPy6EIazCsEtXH5BslfhK1Idl2x6VXFZkjuMm0KsF2c8ft+NVyI9xuw8fuCQYSXjY6yiAdyCjs4IZpRj0ND1xuy8V4UY+XPXXFTrCwu3Tm7+Zd2r4PzGrzLcGxTnyua1Y8a8wdXx0md95al7FX7NGutVlPZSaGFc9AA2gVtAEBO5JFf949RiM0R05Mu839ETi++WeXliPU0bxCg0q/BXsL9s1qVp/29PrPo+9Dtz/3nOKTZeg7RhXwWH5RAnpC7kcxQJXm5uc4YWgt9weTJ/JYtRhLkqnv+0zwKm0q+91ePR6XAIQbiGzyc/Wbxw8sn/g/Tot9rAHfY+BEEup1HxexVRnOC+kksybp+D+622evr+OPePJy6qbWYL9eWxB21zspWVXC2OEyQQ934rcSLoVwEihiFrzPKCjEEMk4Dq5tIREPqsy3/s2lguj+NE8Ynp6L6KmU9Oe+j265Ee2+w2YcDgocwjIzhh5Y2DObTtivNXW2OtsbtVfR/6gVuvfW76w+iMfRWWVR8MmyGjC4j1Kmy6ry2enXGPdDbJyKlslFUwoq9ZBXN4m37uEPgsF0RkOMKMQB7w6BHZ0eKKs/748QfvpVYoTysTcuTPMrJXW3CCNNC4lc9ywLE/yrLk19dykaaccRKvQbxl4G5VySoQxV2HFtH9e/CrXpiwwHjOKoyN2rxcRikP/T6HbWBfRbt7FS7DeU4ucIjPyeryBvdVLJw/78JTq347qv/qg7fdfT+EOFFZgwDQnJ/Js/2eB/Rffc2Km5436X8WLZzPY5S7H6FFg/sqAtwSnoHAnpbb0/ucz1lCnkhNVxpa8jXImG5vr0LhBN2PVrS6duf3UrgV7VU8PfW+x+69Demxw/iDV1p1gMaJKsyo2lex6uqD8wkrbjftrluennovx4ll16tIzY86NleYZKI2L34ool6vIoITllUfgZeEvYrynKhfe5xo976KS/7y29YvmiZG1qXL/sf8qBonFFqk9lXkjyoPOOZH1d+Hvvi031qFEwy3OrdXYQQ2c/QltICRfI7xm/j6EmNtKi8yPC6FdxcIbNNPQAzzGCDRq4Dya3hWoTGpGrdq0RDwmwXzPrr8zJOO+kkyv6wxdN28j/n+3NQvW1qBFumRlyfuB+zi4+LcTed9iM7tVfCIgrMP3Bv1WYWrieTKes/wNhe9ribnleSzvHPFj4VfmxbbUvTaDfNo79fWeVJpnPzvliJtuizrzm9R18LFqJhfzMmP3jql/NPuunnzcbtvvOV2qWUbOWZ7LOPx5MP3TL3zZiln6XMtcXtW2Txmz2qbG8u+4xSxeSPytPg5M45pJCUq91V4R4xwC30+wQVU7pS5nJ/vvB5o476Ki//8m0UL5uMzGosWzJzo1+EAABAASURBVLvgT79eFvsqEr0KG+Nq4D1WxHHLWAQ44dOLnz+DZgw8l/vcgSB3lpOJ5wIlRIG9YPkPdhnvq/jwvbevOGsSPqNx6RknffT+O3YZ7Kuw8V6FYVwNit8oPger5ClgGpbzLWlPUyAH2r6vggseYRWqdyK5Hnyvgk0DCFah/dqJIqBExE0xxwO3XvPs9M/gn7Gd8cgD999yLUc+2LADJC5pfF+FY4gVrILjBDFQX8EmcBqeoWvW2HpmxvzaRHECcZ+F4Nj0HxupQRgDhaiGaldHapC27Ksg+Ume8yf9ouIb2Mti5D3yvLHB5PEr2in7Ksie3jNYr8JZlWzOrvWeUW99HTsBy9j69zloNLKvAunava29ihhueUhJ4UQM8/Dhu29fde5p+BTHleec4h4BLpN9FdW9imgvin/gZIisr0ngVu1Y9jk880fo1ya5ryKKEw32KrxfV+OWW3sUGQcaJ/xKuMSb3+Xu6y57etr9+FTGU1Pvu/PayyLyxHDC8yfThn0V1ra/VwE4XI+tb4nrcBOw9c2PXbYZPhigQpLOpqPIf/IFIHoDZdKL/enPB0T1lTA4+Yqcg4wjmA38zIyjPXLPLWsMXX9g5W+0dXw8et8dZ/zy/wItgSqiV+FMHpyBuEpx5dywBV/hZ8Vtzm8mcCIcgQg1+Y+fsFW8bm6xhuoI5jBW1tOqV2GlKap7FV4y2WuR5/AeAMcJUy1PrY7Pn50OXXfEpiu39s4TFkFER7D5oaOlPL47981ZMx5787VXWK+C66K7EbazexUIe1FePmW3+vYUdnMy5M6xddTbYg5MH1nxZFm7b7gIrFeROMeKSi8RQx2Rh/DcItkJFdfacl9teZqTJ6hI5cXF9IieFJGnnBIRecRtpTxs/ro2dx9Fzqq0uSk4R8EqCkwGZG7z+Y/4tk0/dygFh85wqhcCOoXnP1Kk9OtSendU/EZcSyy1jDOyJudGnil/4fZVsLoPjk9YZ37mbaHNjeGeYa2UR3A1xW9aTyr/HRNaV8+HmV0a2VfhVPNQpasPCHtV9Crs5/X3KuSxlpVjnF/HtGErikZ6FVIeWjlf8Wl5auoWNhf2FFa1MLHqEu4ujgOQFuz3OQy/IavLG9xXEfps7eDjEymcMIxjl57ropN7lcYJhlu0EnxtPBKIGIU3lz/nc76vQmBGzJ7c8rJXwZaUR7WuhiyRK8IkmNpOsNCbWKy3tVdhtMRuJRDMT0tU8dzBpvdVlNeK6TVOGIkT1b0ZOqsdvYrU/PTCR5E4J6JvaHN2DveNRnoVqJLHyu42UGKzu20TbIQnC47NOS04lw7YcrwG8UeaCOJe3K/DTwM+b3xcRiqCdnH+UWN33HDUmMHDNshPmv3S8zMefeiJB++yMUkaeV6aqj7k82eEkiBqVQ4CSZtX1SApSXyWQXx9zY/23Ur3KoDEn/yVcWiJ+PCRYfQc3prq7fKTgA+GEzMWZmTWTEoCVeMV5660Sv99j/zeuiM2Uxe98PRjV5/311rfkz9FiysaUykmj7Rq5K16dZ+t26vQVvUvEm9LLaSx/DfeDOlfcySWpzmSMxw2Jf6Q3ABDP+e5ELm8nIa4D8t/YPmPsRCX/xgHYvL4Osj6HqKQx0kCwZ9o/gOP/ffQM/KRv3nQd44XrC3oaZarxVRidZ8VPU0mCXE1QGlqVBw7m7N7eZwAtydJUuCBTxJs/kiPFZw/sfUtJTGZyuV+ddH+fRWIcJeKfAwj0YL8RvMbsqOciM/vlk7xg/hznNHb7bLWehsiMdZab6PNtt2Zm19gDkPsCn3pgo7sq/ArYoV/ymVJ8kW+vvAThPxGc7XMQ6YhRVw0gEkm6maKBsT8OvTZco0Z8HmccF5PVoOAsBAnChQxhPZSHhGddfZVbLzltqgcI7fc1uEEIFcxhlu8V+G9nFar3fsqah+pXgWd42IpghOWbJ7CCQjccvK4c9S/1FTI2An7Kpxfe15ipc+mahAjJGG4xTi2tw6spEBSHnIZhhZeEmD1IWujcgwcso7DCYpm8NU1MVyE5/zl+T4S4jgNyhQ1w0sMYIaz4DaHyHpI9n40NnteTJEp8gDZPLPLbF9FCTQ2FhNeK/BeBYRfQ+BWiYGo16vg8vgV9QhMa0m3TI9Yr4Jzo+Jto3GrxAkRoxQn7dhXQbp4rgbiaqJXAV6BQ8kj+ZMzAJMTyuZZKh8ruVkeqcKJVK8ikf+YH9BcVb0KHaP15KnTq5jz6ouoHG+0niBx67PYV+G5KsOtGK4zHSmBx3DIxm0OxdUy79dlPk74tVv70jkRxwnv1/AZjlVD4JwcPoKZl1ieyxHh/Ay3TPlBEreEV/lrS1x8+M6bUTnyE2R0IsL5DfMYQNkTzJ6G6xjKU2YWvsZORxvBLcGfjMMJxHDLsDxQCk6uIW0uuVqGaE/TDdpXIaKTkCrCKnz+MzzLMll9OAGUv8imUZxwK4HUE5AK3EKQa0mSZx57aOaTjyIxZjz20IxHHwxYRXEtrV+E3yDZnwXSOAHFKiQuxnDLa4oQt6x/C3FJ4GLV6p6v0yXj3iAt62PUeZsVcekQpVw5CL9mnbjQr5Hwa+txy0p5HE7EOD9Ng5guXh53L3gbWXv9xeeE/ypD/uniRQuvueDMeK8CCi0iOOHsxVY9jhOG+bH3J5PCCYVbEqHdRM6ehTz+dAQI7eRBTJ78Zj/Ye0thF4v0M34EbyubWtHZdOfIa109bOX5ciJ2rf0U9lWM2mbHjTbbavCw9fM3Xpv1/IzHHpx+/53+bCTkYfMnTBK6beSsSptH7Cl1iRs6JY+t7LHSjKWsx43fkvfhK3v1/gmIjffqjcCS8k/fqyecCPcvkULBp+Fzh0CeQAbxjIMsZfUTB8R18cAkLIPUcyW5ulEdhVW1/FLaimcxwp7p50peX1I7ZVUpv5Y2W76vIt2rkPLAHRmrUPLU1K3pGKsRNOYFrMJ5hrAnM4CzJ1gupmwl7ekMo1iFYdkKiPRYwS2febkNy51lhnNJgM3IpCGtkKib3fkMb9w5hinB8x/HScOsb6xLRyaSa02AloZEkPwGYqWDXgWhVxkbbn5YKU+i9+N0KeXhuO5FoJrOOgaDOvsquAdwWLPc+5knWWl5imQIb7ZCHu+7JInJ+BJV9ypSPc3yWuGzGicCv/YxKryVSYnl+yrothInEJ/fUFhp+0hclDjh0ZcupvXNSqQK/VpGZwQnKNi0X3OcWOa9imJxWNgzSeLRiY70KvTaKHkCzq/kYbr4+YmvlG5DOR0sAlmvgjSlBXA257qIZ0+hPQGlBV/fcuYmluGYH5XrKtECEicoCwq/NhInvM+6lUAn9CqQxi3bCKvwCVzgFsSSRjEPTt/KXoVtQ6/CcLSQuGX9W6hgFVEcZbrIacBxwsg8IHITkAX5D6pX4aKnAb9G+/dVNOzXInoQ4hbxcwTyWCASYcDnfl+FRAspT6FFulehYwMctwpTGcTWyxT/UpObBp/Vvgok/TqSa8GrNURwC7FcSxd8EfdVyNPT8nD7cHnInuWcRuroXUPNn0k/4qsIsFwYy38ocR4WUNUHEvnPRnOtk0xp6zg/t46MTiEPvrT7KqK4ZTxO2IjNk/zGZSttc46+pX9kn4d9FSitHsYEhKXIX43ALVvVq+BILnK58Bi/BM4DyI4yl5eeAXya+ypkr0J4mMcthLjl0SLFKoTNGUIXV2VOK/BeBRI+y3I56vUqeAz5FfUIDBvxXA4mhnERgRM6JlSvwsoYlfFHnoEv0L4KK3oVtCze82I25yzKxS2Y53luxJKi5DcZv1XUZxHJfzpGA5/1M7WjV+FXS84vcOurtK8itLnkN4R5lgCTowXdwBC7AmLcRcrf+muC5XzWQHqQte37Doh8psA9I/UshiOnj6Fl9x0QwyMyOIKxiugTkKgk+TlD1x8xbvwBG2yyeb/+A7r36Em/VdrcvHTxwoUfvPv2S889ff9t1z/x8H1SUxAPTVkV1srFAZMzogV5GAJ7pq3KfM7p2+QmYdd4rNY+y0SV2CVworFeBeM3xdGXOCzOXKzHehUgBPbyTPz1qZtuvQPkyB/K33DJ3/957uk8Rm2dXgUa71WM22v/3Q8+YtCQdaI/XtulS1OvFfrk/xu01jpD19/o8YfuhUALuJxep1cR2rO0qrY5s4znappVBFZFwNVsk42ihTG136NUceliSGAJv1b5NRD4rIy/xv26Idzaaqc91h0xCskRiTMZfxonjPy9ikBO5A5xxMSfDh+1Ze4BaGwQbkXRor48LRF7qqfwDdpTrFfsnCakcr9IYXQOnEd7Tl7Zq3BsQMYobKpX4XQLcy3S8jjdtt9z/959Vkw6BsOhSm4Ezp8o54Y1yOixOx36/Z8MWGMI2jIawS2AVYtKnhhOOFtV4QSSXA1I8JuM+mtGiM+sYJh1nHLkDWRTl6cD63uAZlmDMI2kJ0sBQa8CgMgmjPP7HLTD+ANy0EZqUHwUL6C8mVncNSUci6KcRbjV+udm2+545PE/a6tnlAa2Ya9CSFLqaMDyD/kHaH9dqRdYjrC+V1FatZgfzszC5tqerhoq5WG/Jghw/VOsAhGc8GjxWe2r6NGz17jxB+V5Pb0e3u6QfDNkFfAcLcr5MXKr7Y46/uf9+g9E2wePHJvELUDpy9dSy2M8WggtJKtgmiJYWY6Lzqqt37JHKpfH8p/IVVX5uBwN5TY1v5CnDr8p7zX+sGPWXGd9NDA42tWVR/OtWr7PK5G9Dj4y+Ttj1r771pynpj0w8+nprbtTjenTd6WNNhuz7kab9FmpHxwuQvOJOjVIYJO6XM3zuaINIuxp3G/P1/RtUfzGzd+ERK4t3VL7tcAMUVUCsfyncxu9SOQ/F9OUayVOINarGLbhyK122rOpa9d6jgEpQiCP9R08y+OSblvTdPxh395g0y1cN12Mj95/94Yp51934TnwlWSrrW+ccn7+9xbb77LxFtvEehUAQ18CzARuUY9VcwvLMnVMRyh2T0cTt7n/VxO+YL0KAoH8nd0OOmLVgYNQ1zOYPDaOeWTGZF02aOiwrXeOO+Lrr8w6d9KvZzz2cKpXMe2e26feffun0quwqa5JgFtCU2XzppBVtKFXIVmFwwP3Rn1WwfTXWdY7s1ExQatRm3/XAw7PGxvROA6GlyfsVRDTRBhDLKy2333f/gPXCKfOMeOyv53a6hmQOMp0YdNonDASJzha2MoaRFrV8zmIms5LYhOS1P4sEKtmn5ok9NvnluMbeQbA9GRnlv5FZ7BzHFt2kQ2ON/4CgWzt3VexxtBhO+59YE4C0NAQmgp5DLQFy3vRerQK0b1nr423HNulSbc0WpqbH7rzlqn33GbMMtlXYdnCsAjx+c7wNWK6iDoLhi2d58KR9XV8rqkaJ5xfR3wWyV4F4YT0WVgEvRMoTl5vX4XkN2bCkd8dtNYwvk6fLFrYpWvXsCXFuQu3YP7Gyv0HHPKdH+Xwk/dI8vkXLVzw7OPTrjrvjFmXXMaYAAANvUlEQVTPPKlwa8txuw4YFPl3/+bOmX3rlRd7riYwj3ELsifPcV5Hy6SN4oSRNhd8ztSzudMCSOBW4AOtyEHScztCIorLgmBZI+nXn9K+ivGHHj1qm3E8oeTVwdOPPtTa2w2GkIfJkLe0/+N//zJ2171XWLFvMVVeFY/aeoeJv5y0yZhtAZ/v87+Hb7J5j1691cz5Ry8++9Trr7zoLcsRUWASwy3iW9rmHH2df4B8S+AENPoSriOFW+XMen2hnlEXw/8+h7IjqmoQn9sse2GrehUcyTthX8XIMdvust+h3br34JK/9uLzr856DrERqUFq1tz1gMPWXGe9kLLkPYx9v/kd76G1RV5rveHhmTlWzXxqOpblvgrD5Zc1iEYLo3GL7Mmw00icYPLI0UTdz2SvwrjfQbdt61VYi8aexRgumQ14uw16J9179NijtdOwGtdkwbyP/nXtZauk//3wEpNYfZ/PmZfBJsui5+fEc4NNRj/7+CPF3YdvuvmKtUaFGvM//ujlmc/mf+QJbvzXjxo+aov8qWzhtTkXmT/v47yKueema+645jJ0tFcR1CAtsv5qyOahPZOjqaJXQasl4J+9CDg/OAa0qVdBI9pjlbhlD//hTzfcbEsexLalZfqDd991/RX7H31cSlXeq0Aj1mHcKD+uOmBQz1gHdsGC+a/MfPbIif+5/R4TVIs2f0ibd8DyZLTByNFfm/D1yaf9bsZjUzluhdzC2qBXAW5zyS18xZfsVXDPQCVOhCMTPlvIWpi7OOrqgzG7FOc3zGOcipTbwHKbzH+aW7jM4rGxsNrO+xycd5PUPxX+1huvXTv5bOuTeGRYP5HP5TnrzB0rev7cN15/7slHCVkHrjm0a9du4Wkfvvv2D39x0q77H1rRvM81WnuDjXIekz/cd1Y1Wh6PJQi5kav7BLfwEWsYSwW3OTiutHVkkFUiqnoVsNFeBQC/frz6UPlP9yoobiqeT1rn+oUIm4zZfp9vfqfXCuLR64L5H9902fmvvzyLZo4MMjy8PPmft1xx4Wsvzgwj6b25b14z+Sy/NkDflfuFRWw+hqw7fNOttqv4Z4hp9F15lYOP/WF+cmO9CiBVg9goq3AYA8t7FeA41MaRsXnBkY2hhdg3yhbO44REiwhOCL9GBU4Y6aisq21bK4tD/u149bgrz+uP3vuvO66eAl/jxAYxaHh58rfyKuOk//e9+2+9bv7HH9raWDh/3vQH7j7lhB8//tA9XJ4cq6KttjxxNOIZxVhltYH7H/Xd7j17lpgvexUcJMkbIjWIR4uIPeG5LUw74IKNpkSvohAyVjfDX8D8ujy/9NkUTjCaCq4J/FnB80lLddD4Q7+9xtrDlAI5YFx30TnFBCadVSgrIcCt996Ze/qvf5q6jqIz74ChM8Za6w7fYfcJt/zz4rBXgapeRcjVAFT0Kvyx3SOz6R5c0KsAILKJje2rAPU0izsoWTm/cT6p0YJ4FuM3Bx4zcauddldUI29aX3HuX97wPYakLWiNEeM3JoFbpY41Sfr0XRnpseSTxQ/ccePPjz3kG9tueNz+O11y5snvvzM3emaPXr0222aHSK+C2dMkehWFAhBaeJyO9io6MrIGnoAQToSsQu+rgFzp1lHmP8NxQrAKK1iF7w24u+Qz77TPwV/b7+tdu3Xnoufrcef1Vz5yzx1Uu0N2oPlgYcajU8QoKvdVIJ2z8mr2otP/eOoJ/zHr2afyi9+d++ZV55/1x59NfHP2K9Hz887KOsM35jYnlsZ7uEjUIHDndC5OhCMTK+2lMWDJmfk1lCcBIpcXw8bQopb/LDunPBpmi6AaKjzjkIOOnahIaOvjjH/ddPnZp3q3qledWhejVElKlLZCnlJ5H53vvf1WatonHr7vpssnW9bZzP/zwown8gcuzUuXhJes0HelnD/5flSRF2I4YQGBMcsSJ8KRVfcqIH22U3oVgODkVr5QPcENR43Jy5O8t63knv3SC1dfcBazmpg/NuK5PMAJncspjpubm6PzLlowf/qD91gb6SU8Oe3Bjz74ILwkL4kHrrmW6FWQ1honFBdchjgRjibLepqEE+3bVxHraZaTWtW/4309VO2ryJ+K9Y71D4asu8EfJl+HxkZT1677H/W9/H/Fy6ceefA3xx8jer5CTnF0y9WaO5qbl4aP9BYumP/OW29IXcqZn3z4vrwIWnnV/qFIxiMZ6u6r0Jb5tEbGMlzra55lG+lV1BRN4gRcjKZYRYBbDr0A2Mo835FhITsEmvND5vJCiA/ff6956dLklDaxryJ5vnMAjdDo3F5FR0bmbeF6FWj7vooGexV+2XnuDHusZOVlZgxembPeTBGugtWSjm/Pmf3J4kXx2USydZKbSvkJLVimZX5gGK50qFfRkZG1b1+FzH+N9ioAcO4iLOgnCPhN5w+HE3BILnS0/DzSN3+AMu+jD8O5evbqverAQQwJfDU0bMONu8U2Ii1duuTD995FArfCfRX4jEZmP/+/V4FOH4rz+0cyVmkKz6jmzH5l9kuzwrl69Oy13kYjJfqW8w8bPnLFWHdk8aKF77z5BnR0fUo1SOMjA+fMsTqldpqBRVWvAonegI3jBGMV9HySehU+Z5llFTdxVlGTmOEiewJSSJI/hwszS/7Ef/TYHUeMHhPuqxg9dlze8gpvnzdCpt17B3vOrnLK52U0Wdv+fRXWtojvXNTZ50Hfc4nsq0BiH8N9t1x7383XihoqmJ9xfps/2drnsGPV7vClS5Zcc+HZl53950hdBpMXRId+99/zrmXvPq2bwRYtWPDM9KlXnHfGC09NV/JMveu2nfY+cNCQtZUR+6028OBjfvjBOyfOrvVqC1W+edxPNt5im9DieU55/KH7eGWEz+toLcyiua2RfRWeqxYY414YRHMn2A4XVO1jqAlQ5HuibRV7JG3Qq4iPgN/ksw0aus7EX5w0ZNgGxPta29tjx+Wl8lm/O+GxB+8BJTpgzmuvPHrfnQMGDe7S1FXZavimm//sT2c/eMdNLz//zAorrbzdrnuvvcGG0W9Xvzf3rYfvuu1ziBPhaJXe1dzVvQpYVZE32Kuwje1N8mjh/hPprPAegJYHdStfnzu8/Hse9M0h66wfVgT549MJR/xbrbvFej+wt109JceDoesNV+fnn646YPW9Dz0aleOTxYvvveW6mU8/ji/CqO0hRSO9CrShVyFYhTufmCkr7WNoUd5M4ARDC/IMaG5kgTpVn/cg59kV2wRXGzR4g002d23SUp43Xn3p1n9ekjfE0PaRz5AnrIvOOBlfkJF5VG+sV8HWSdUgtetKBGbI7ycipEG4r4Ju5jhEGakReVy9Byg2Vyd/2/jz50p/YvpSDZI7x02XX5jqeVTc/cmpD/zhPyfiizPoW/aN9ioMWSrdqzCJZzEmzS0U/4DELbB9FVoe2RtIDT4/x6388Vh6m+DsZ6ZPg+Q3hS6X/u2UKWefFm17REfed3/gjpt+/9Mf5A9i8MUZBaKqXkVxjO+rcDjhE7j7U6yrUb0KfzplHHl+w/sq4GbyuOV4cdUgllPM70TIn6a+Ouv50LHyavOf559Zsa/i6sln/ebH//bEw/eH/9ATH/nJr70488zfnjjp58d/sTwjH+aonUYWf3mc8MSOXvjnSVHaZ8HOZ4BjUyzR+krSJs5i04jLrPoVqNiwNAXrP2p53It+/Qcc9r0fj952XLErIH+Q9uzjj1zxj9NbaSO7QErpX2202Zhd9j1ovRGj+vVfrVv3HgW3zZPOxx9+8MKMJ++68aq8NsEXc5gjdxwpOH9lr4L1G1ivwjbynQs03qsQvRPEn5eqXoWVNUgb5EEbfq8iXmd9vnsVHRkZZA0CXoNY9qSR8wkb71WITFGeDlqJtvYqSnnYxRX8xtTjLmJON0PgnZQTYXWdVZcbfQlHBm4XncvhF4LVIBHOr6sPlJ+CrahhTLbM5WDTCAYa1CBGITwkv9HyQH0HRMgAE34HhEWIgY1/74YjE74KoynZqzAcLXgMNdyrQP1ehapBCCcq9lXYoFehcMujHWi90z3WhCS1PwvEqtnHRHDoSz8yjxOqV6EsCBZDDfYqUK9XwTOLwK0CAgznmxLzFU4UJ/p8Zzj2RHoV5LuMQCONW8bJ8xUbWSqXI9KrkFxEo0WYjyN9Bcu5BeGEzA7udO8aCZwgzAPDPLfeaX4D7p1p3Pr87Kv4rEZWjRMOLcBjVMQuj2ndq7BsGsKSFL9x2ao2KvZVsF6FwxiBJZLfOBKRwi0jtAh6J1/tUXtsyHk7bMW+Co4TtFpxVvFl/L2Kr9rIgnxMqw5onKgdfC4XvQqIBEK8gedyo6LTIzyY5/nnOKzAlfwmihPSUzVOQOIEhCR2OU5Eh//GWxg3AU4AbehVuMju9F4FwItOIQ/1++O9io7+XsVXbWQql9NKUiCD4QTa0KsImWkHexWSG5nP4Pcqvmqj4BzLYl9FyPlZbmpPryKNW3FW4TAGX+leRUdGxnM55AqBnnS4zyOcv3ZZbF9FhPNbvvYxnFC9CgZKiHEjBGjhfVvLUz6vWQ4XbRhuJ1i9fE9nac7vOV0EJ0LuEuIEIv1ZX4NYnhEYv+GEonHcWs4t2jQySNt12r4K4zGf6k9PWYN9FZEahOFExb4KQKLd8l5F540sqAB9jKLy9yr4c5aQVbgaBLIaMhFWYSO9CsDIOqiqBgEoAy7Hic4c/x8AAP//2d6UEAAAAAZJREFUAwDSg207uBRDawAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAFg0lEQVR4nOSaeVBVVRzHf+/5VBYJASGBBIFkUSFZFE2UgahIA6RGsEQkSEUHl8YRWhRFmVFQKJNwic0JEiTFAYwMhEQkCYEUXDABLaUkEJB9edDPnsPgfc/77gaPO37+YO5877nnnB/v3t/5nt+9osHBQZCis72tvCi/tDCv/l5dS2NDd1cnKAIlZRUN7Zf1DIzsHF1sFjqpTFKTbiMgBND6qCnzu2MFWel9vb0wlhg/YYKzu5ebzxp1Ta3h+jMBVBRfiN0d3N3ZAWMVJRXVwO17bR2ch5SnAeDfjMTYjKTDwAfeDwjy8F0nEAjwWCiRinOz+TJ75FR8zMWcM5LjJwFcLys5tnc78IqE/WFVpcUgCeDnU8kDYjHwCrG4PzfjBB6IWh81lhcVAA/Babc0/Su6cvE88JayovxxplNUGx/WAz8Ri8XjTDSV+vvG1ppFnbaWZlFfbw/wFpy8qL+vD3gLTl4IPEckt8WSFX6OS9/TMzSG0QVtZWXppdTDUXhA0myclaEOyemgXQdcvXzVJmvAqINe2uBVM7TTpRdySZqR/QIqk16yd3YFhTLbbgF5A7JnoK+3u6erCxTK4MAAeQPyAHoLf8wAhVKce5a8gZws9EN8TJfi9jcdba0ZSUfI28jJQp3tj9O/Pei7+XOCjpuH0wnfAHfgHmXZ6kCCiL4fJ0B+ofx1IC8j9cHdWoL47ocBWjpTgSOwq6Uf+BNEHDTvTJrca+UHgI9Rwv6dBBG32Cs3hgBHYFfYIUHEQeU+wUAlAOR2ZYV0Mp7r+KappTWwBjvBrggiDoeDUrmcqpVIORQhXWjx3xYmELIyI3g5dkIQcSAcDqhBdfimhn/OnkggiPrTjV2WeQMLXDxXYCcEMfv7eBwOqEHj/5eVHIdbOIKI2QMXbGAEXrh8zWaCiENgZQ0oQyOA3p7ulJhIgqiqpu61dhMwwnvdFmUVVYKYfCiClsOndwdfPp9Tc7OSIDp7eOsZGgFNppmYOrkvJ4jV18pL8n8COtB+BOMjdxLKqVghk34Q5RIQHCYprQ2B3Urna7nQDuCvmtsFmekE0czKxt7pbaDM/DfeMbGwJIj5mSexGA40YZIE045+JW2QfDZ9Kho/nsrlEyYqrQwKJohoe04ePQj0YRKAxCARxMla2u6r1lK53M3nY2xMEKnYHpkwXIYYGyQ2tkcmDANgbJDY2B6ZMDcCDAwSS9sjE1ZOhpZBYm97ZMIqAFoGib3tkYnAZ9EsYAHmxKjUHOmsQgW0PZ94vcWyNMi2MocGKZnpPZD89T72hU0OSovoXtDDAE1uXb1SUnAOWMNNbfT4l+EyX5g/D2yceIC2fZIJNwGgQcpOiafePisljoHtkYmc2ih1rpdd7upo156qp6ZOVkitv1d7OjE2OyUOOIJtFlI4L8D7AcbMsp3/ivEMPLhf+wfeYDAyjEgAuK5tCI2wsJ43pFRc+iUxandzYwNwDWcP8XACd+yzsncYrugaTNeYokP+qoIZ3D8DRuazh38OMwRuI/EUcM0IBGA2k8EpxvA+Cwkp7sSpU1d943mn7lRdBU5RVp0kVNecApxSd6uqrChfWsei2J811cApOHmh4Qxz4Jrj0eHtrS3DlfbHrUnRe4BrsCIospgzl/PvhTDfr3dzGIWFDJO14MHdmpBV7sBPotPOCfUMjS3nLQQeYuPgpK2r/ySN+mwM4TwXjTQ44dVbvgDJOoA/wkdbQ4FX+G/bpfl/FfDpQrZ4iaen33rgCTjVRa4ekuNnPj3G/H0k/LMx/unxhtBI69cdhxTix99NDX8nRe35/ddCGHvMWbDYb+sOLR3d4aJAZjUBax43y3+7c+NaQ/395saHivpmZaKysoaWjo7+NHwbMtPW3vw1O+k2/wEAAP//GVfO7gAAAAZJREFUAwCFZEASIPtw1gAAAABJRU5ErkJggg==">
+<style>
+  /* Android 端末に入っている等幅の英字フォント。Chrome は名前を書いただけでは使わないので local() で呼ぶ */
+  @font-face { font-family: "AndroidMono"; src: local("Droid Sans Mono"), local("DroidSansMono"); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --fs: 1.125rem; } /* 全体の文字の大きさ（18px）。入力欄は16px以上でないと iOS で自動ズームする */
+  html {
+    /* iOS の自動文字拡大を止める */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    font-family: "Segoe UI", "Yu Gothic UI", "Meiryo", "Hiragino Sans", sans-serif;
+    background: #f0f2f5;
+    color: #222;
+    min-height: 100vh;
+    min-height: 100dvh; /* iOS のアドレスバー分を除いた実高さ */
+    display: flex;
+    justify-content: center;
+    /* ノッチ／ホームバーを避ける */
+    padding: calc(20px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right))
+             calc(20px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 480px;
+    padding: 28px 24px 24px;
+  }
+  h1 {
+    font-size: 1.35rem;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  /* 文字の大きさは、タイトル・注湯テーブルの数字・バージョン番号以外は --fs にそろえる */
+  .section {
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-size: var(--fs);
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 10px;
+    border-left: 4px solid #4472C4;
+    padding-left: 8px;
+  }
+  /* 入力は「湯量・豆量・味わい・濃さ」を1行に並べ、ラベルは欄の上（ユーザーの図どおり）。
+     下の履歴も同じ列幅で並べ、各値が入力欄の真下に来るようにする */
+  .inrow, .hist-row {
+    display: grid;
+    grid-template-columns: 0.9fr 0.8fr 1.3fr 1.15fr;
+    gap: 6px;
+  }
+  label {
+    display: block;
+    font-size: var(--fs);
+    color: #444;
+    text-align: center;
+    margin-bottom: 4px;
+    white-space: nowrap;
+  }
+  input[type="number"], select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px; /* タップしやすい高さ */
+    padding: 6px 4px;
+    font-size: var(--fs); /* 16px 未満だと iOS で自動ズームする */
+    text-align: center;
+    text-align-last: center; /* select の表示中の値も中央に */
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    background-color: #fffbe6;
+    color: #222;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  select {
+    /* appearance を消すと iOS で矢印が出ないので自前で描く */
+    padding-right: 18px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M1 1.5 6 6.5l5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 10px 7px;
+  }
+  /* PC のブラウザが出す上下ボタンを消す（場所を取って数字が中央からずれる） */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; }
+  input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: #4472C4;
+  }
+  /* 入力の履歴。タップするとその値を入力欄に戻す。今の入力と同じ行は灰色にする */
+  .hist {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 0;
+    max-height: 210px;
+    overflow-y: auto;
+  }
+  .hist-row {
+    padding: 5px 0;
+    font-size: var(--fs);
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hist-row.on { background: #e2e2e2; }
+  .hist-empty { padding: 5px 10px; color: #888; font-size: var(--fs); text-align: center; }
+  .result {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: var(--fs);
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    min-height: 280px;
+    /* 長押しコピーができるように選択を明示的に許可 */
+    -webkit-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: default;
+  }
+  /* 注湯テーブルだけは桁を揃えたいので等幅＋折り返し禁止。
+     万一はみ出す端末では、この部分だけ横スクロールさせる。 */
+  /* AndroidMono は Android 用（下の @font-face）。無いと日本語ページの monospace が桁の間の空いた細い日本語フォントになる */
+  .result .sched {
+    font-family: "SFMono-Regular", Menlo, Consolas, "AndroidMono", "Courier New", monospace;
+    /* 「◀ 経過時間」まで入れた最長行は半角25文字ぶん（◀は全角幅になり得るので約15.5em）。
+       スマホでは表だけ結果欄の左右の余白にはみ出させ（下の @media）、その幅で最大限大きくする */
+    font-size: clamp(0.9rem, 5.6vw, 1.45rem);
+    line-height: 1.75;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 12px 0;
+    padding-bottom: 2px;
+  }
+  .result .header { font-weight: 700; color: #1a5276; }
+  /* 表の見出しと「前半40% 完了」は数字より小さくてよい（ユーザー要望）。見出しは .hc の箱で列に揃える。
+     大きさは表の外の文字にそろえる */
+  .result .sched .small { font-size: var(--fs); }
+  /* 漢字は同じ大きさでも数字より大きく見えるので、「抽出完了」は数字より一回り小さく（ユーザー要望） */
+  .result .sched .kanji { font-size: 0.85em; }
+  /* 見出し・区切り線・「前半40% 完了」は行の高さを詰める。インラインのままだと数字の行と同じ高さ（1.75倍）になるのでブロックにする */
+  .result .sched .tight { line-height: 1.3; }
+  /* 表の見出しの列の箱。幅は数字の文字幅（ch）。中の文字が箱より広くても中央・右に寄せたまま左右にはみ出させる */
+  .result .sched .hc { display: inline-flex; vertical-align: bottom; }
+  .result .sched .rule { line-height: 1; }
+  /* 注記の最終行の右端にバージョン番号。float を注記の中に収める */
+  .result .note { display: flow-root; }
+  .result .ver { float: right; margin-left: 1em; font-size: 0.75em; line-height: 2; color: #999; }
+  /* 文字は疑似要素で出す。innerText に入らないので「結果をコピー」に混ざらない */
+  .result .ver::after { content: attr(data-v); }
+  /* 音声ガイド中の進捗マーク */
+  .result .mark {
+    color: #c0392b;
+    font-weight: 700;
+    animation: markBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes markBlink { 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) {
+    .result .mark { animation: none; }
+  }
+  .result .green { color: #1e8449; }
+  .result .blue { color: #2471a3; }
+  .result .orange { color: #b9770e; }
+  .btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  button {
+    flex: 1 1 0; /* 文字数に関係なく同じ幅で並べる */
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px;
+    font-size: var(--fs);
+    white-space: nowrap;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* 見出しの右に操作ボタンを置く行（「注湯スケジュール」＋音声ガイド） */
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .title-row .section-title { margin-bottom: 0; white-space: nowrap; } /* 幅の狭い Android（360px）で2行に割れないように */
+  /* 音声ガイドは主役の操作なので、スケジュールの見出しの右に置く（ユーザー要望） */
+  .btn-guide {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    background: #1e8449;
+  }
+  .btn-guide:hover { background: #196f3d; }
+  .btn-guide.running { background: #c0392b; }
+  .btn-guide.running:hover { background: #a93226; }
+  .btn-copy { background: #5d6d7e; }
+  .btn-copy:hover { background: #4a5568; }
+  .btn-reset { background: #a0a8b0; }
+  .btn-reset:hover { background: #8a929a; }
+  /* ①②が使えない環境向けの手動コピー欄。
+     書式を持たない textarea なので、長押しコピーでもプレーンテキストのまま貼り付けられる。 */
+  .manual { margin-top: 14px; }
+  .manual-hint {
+    font-size: var(--fs);
+    color: #b9770e;
+    margin-bottom: 6px;
+  }
+  .manual-reason {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  .manual-reason:empty { display: none; }
+  .manual textarea {
+    display: block;
+    width: 100%;
+    height: 170px;
+    padding: 10px;
+    font-family: "SFMono-Regular", Menlo, Consolas, "AndroidMono", "Courier New", monospace;
+    font-size: 16px; /* iOS の自動ズーム回避 */
+    line-height: 1.5;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    color: #222;
+    resize: vertical;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  .btn-close {
+    width: 100%;
+    margin-top: 8px;
+    background: #a0a8b0;
+  }
+  .btn-close:hover { background: #8a929a; }
+
+  .toast {
+    position: fixed;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: var(--fs);
+    line-height: 1.4;
+    text-align: center;
+    max-width: calc(100% - 32px); /* 長いメッセージでも画面からはみ出さない */
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  /* スマートフォン（iPhone 等の狭い画面） */
+  @media (max-width: 430px) {
+    .card { padding: 20px 8px 18px; border-radius: 10px; }
+    h1 { font-size: 1.3rem; margin-bottom: 14px; } /* 本文（--fs）より大きく */
+    .result { padding: 12px 11px; }
+    .result .sched { margin-left: -9px; margin-right: -9px; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>4：6メソッド</h1>
+
+  <div class="section">
+    <div class="section-title">入力</div>
+    <div class="inrow">
+      <div>
+        <label for="total">湯量</label>
+        <input type="number" id="total" value="300" min="10" step="10" inputmode="numeric" oninput="calc()" onchange="normalizeTotal()">
+      </div>
+      <div>
+        <label for="dose">豆量</label>
+        <input type="number" id="dose" value="20" min="1" step="0.5" inputmode="decimal" oninput="calc()">
+      </div>
+      <div>
+        <label for="sweet">味わい</label>
+        <select id="sweet" onchange="calc()">
+          <option value="甘い">甘い</option>
+          <option value="バランス" selected>バランス</option>
+          <option value="明るい">明るい</option>
+        </select>
+      </div>
+      <div>
+        <label for="strength">濃さ</label>
+        <select id="strength" onchange="calc()">
+          <option value="薄め">薄め</option>
+          <option value="標準" selected>標準</option>
+          <option value="濃いめ">濃いめ</option>
+        </select>
+      </div>
+    </div>
+    <div class="hist" id="hist"></div>
+  </div>
+
+  <div class="section">
+    <div class="title-row">
+      <div class="section-title">注湯スケジュール</div>
+      <button class="btn-guide" id="guideBtn" onclick="toggleGuide()">音声ガイド開始</button>
+    </div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="btns">
+    <button class="btn-copy" onclick="copyResult()">結果をコピー</button>
+    <button class="btn-reset" onclick="resetSettings()">初期値に戻す</button>
+  </div>
+
+  <div class="manual" id="manual" hidden>
+    <p class="manual-hint">下のテキストを長押しして「コピー」を選んでください。</p>
+    <p class="manual-reason" id="manualReason"></p>
+    <textarea id="manualText" readonly inputmode="none"></textarea>
+    <button class="btn-close" onclick="hideManual()">閉じる</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">コピーしました</div>
+
+<script>
+const APP_VERSION = 'v1.61'; // 画面の注記の右端に出す。変更してサーバに上げるたびに進める
+const STORAGE_KEY = 'coffee46.settings.v1';
+const DEFAULTS = { dose: '20', total: '300', sweet: 'バランス', strength: '標準' };
+let scheduleData = null; // 直近の計算結果。音声ガイドがこれを読む
+
+// 設定をブラウザ（localStorage）に保存。プライベートモード等で失敗しても計算は続行する。
+function saveSettings() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      dose: document.getElementById('dose').value,
+      total: String(roundTotal(document.getElementById('total').value)),
+      sweet: document.getElementById('sweet').value,
+      strength: document.getElementById('strength').value
+    }));
+  } catch (e) { /* 保存できない環境では何もしない */ }
+}
+
+function loadSettings() {
+  let saved = null;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) saved = JSON.parse(raw);
+  } catch (e) { saved = null; }
+  if (!saved || typeof saved !== 'object') return;
+
+  if (saved.dose !== undefined) document.getElementById('dose').value = saved.dose;
+  const savedTotal = roundTotal(saved.total); // 丸め導入前に保存された値にも対応
+  if (savedTotal > 0) document.getElementById('total').value = savedTotal;
+  applySelect('sweet', saved.sweet);
+  applySelect('strength', saved.strength);
+}
+
+// 保存値が選択肢に無い場合（将来の項目変更など）は既定のままにする
+function applySelect(id, value) {
+  const el = document.getElementById(id);
+  if (value === undefined) return;
+  const ok = Array.prototype.some.call(el.options, o => o.value === value);
+  if (ok) el.value = value;
+}
+
+/* 入力の履歴。音声ガイドを始めたとき（＝実際に淹れたとき）の入力を新しい順に残す。
+   同じ組み合わせ（湯量・豆量・味わい・濃さ）がすでにあれば追加しない。 */
+const HISTORY_KEY = 'coffee46.history.v1';
+const HISTORY_MAX = 3; // 履歴は3件まで（ユーザー要望）
+
+function loadHistory() {
+  try {
+    const h = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    return Array.isArray(h) ? h.slice(0, HISTORY_MAX) : []; // 件数を減らす前に保存された分も切り詰める
+  } catch (e) { return []; }
+}
+
+function currentEntry() {
+  return {
+    total: roundTotal(document.getElementById('total').value),
+    dose: fmtNum(parseFloat(document.getElementById('dose').value) || 0),
+    sweet: document.getElementById('sweet').value,
+    strength: document.getElementById('strength').value
+  };
+}
+
+const sameEntry = (a, b) =>
+  a.total === b.total && a.dose === b.dose && a.sweet === b.sweet && a.strength === b.strength;
+
+function addHistory() {
+  const cur = currentEntry(), h = loadHistory();
+  if (h.some(e => sameEntry(e, cur))) return;
+  h.unshift(cur);
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(h.slice(0, HISTORY_MAX))); } catch (e) { /* noop */ }
+  renderHistory();
+}
+
+function renderHistory() {
+  const box = document.getElementById('hist'), h = loadHistory(), cur = currentEntry();
+  if (!h.length) {
+    box.innerHTML = '<div class="hist-empty">音声ガイドを始めると、ここに履歴が残ります</div>';
+    return;
+  }
+  box.innerHTML = h.map((e, i) =>
+    `<div class="hist-row${sameEntry(e, cur) ? ' on' : ''}" onclick="pickHistory(${i})">` +
+    `<span>${e.total}</span><span>${e.dose}</span><span>${e.sweet}</span><span>${e.strength}</span></div>`).join('');
+}
+
+function pickHistory(i) {
+  const e = loadHistory()[i];
+  if (!e || sameEntry(e, currentEntry())) return; // 今と同じなら計算し直さない（音声ガイドを止めない）
+  document.getElementById('total').value = e.total;
+  document.getElementById('dose').value = e.dose;
+  applySelect('sweet', e.sweet);
+  applySelect('strength', e.strength);
+  calc();
+}
+
+function resetSettings() {
+  document.getElementById('dose').value = DEFAULTS.dose;
+  document.getElementById('total').value = DEFAULTS.total;
+  document.getElementById('sweet').value = DEFAULTS.sweet;
+  document.getElementById('strength').value = DEFAULTS.strength;
+  // 履歴も消す（ユーザー要望）
+  try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(HISTORY_KEY); } catch (e) { /* noop */ }
+  calc();
+  showToast('初期値に戻し、履歴を消しました');
+}
+
+let toastTimer = null;
+function showToast(msg, ms) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer); // 連続表示で前の消去タイマーに消されないように
+  toastTimer = setTimeout(() => toast.classList.remove('show'), ms || 1800);
+}
+
+// 総湯量は10g単位で扱う。入力途中（例: "2" と打った瞬間）に 0 にならないよう最低 10g。
+function roundTotal(v) {
+  const n = parseFloat(v);
+  if (!(n > 0)) return 0;
+  return Math.max(10, Math.round(n / 10) * 10);
+}
+
+// 入力確定時（フォーカスが外れた・Enter）に欄の表示も丸めた値へ書き換える。
+// 入力中に書き換えると打鍵を邪魔するので oninput ではやらない。
+function normalizeTotal() {
+  const el = document.getElementById('total');
+  const r = roundTotal(el.value);
+  if (r > 0) el.value = r;
+  calc();
+}
+
+// 20 → "20"、15.5 → "15.5"（不要な .0 を付けない）
+function fmtNum(n) {
+  return Number.isInteger(n) ? String(n) : n.toFixed(1);
+}
+
+function calc() {
+  renderHistory(); // 今の入力と同じ履歴の行を灰色にする
+  const dose = parseFloat(document.getElementById('dose').value) || 0;
+  const total = roundTotal(document.getElementById('total').value);
+  const sweet = document.getElementById('sweet').value;
+  const strength = document.getElementById('strength').value;
+  const el = document.getElementById('result');
+
+  if (dose <= 0 || total <= 0) {
+    el.innerHTML = '豆の量と総湯量は正の数字を入力してください。';
+    scheduleData = null;
+    if (guide.running) stopGuide('設定が変わったので音声ガイドを止めました');
+    return;
+  }
+
+  const ratio = total / dose;
+  const first40 = total * 0.4;
+  const last60 = total * 0.6;
+
+  let pour1_raw, style;
+  if (sweet === '甘い') {
+    pour1_raw = first40 * (50 / 120);
+    style = '甘い(まろやか)';
+  } else if (sweet === '明るい') {
+    pour1_raw = first40 * (70 / 120);
+    style = '明るい(酸味強調)';
+  } else {
+    pour1_raw = first40 / 2;
+    style = 'バランス';
+  }
+  // 1投目・2投目は10の位で四捨五入
+  let pour1 = Math.round(pour1_raw / 10) * 10;
+  let pour2 = first40 - pour1;
+  if (pour2 < 0) { pour2 = 0; pour1 = first40; }
+
+  let lastPours, times, strengthLabel;
+  // 薄め=1回 / 標準=2回 / 濃いめ=3回
+  // 各投を10の位で四捨五入し、最後の投で辻褄合わせ
+  if (strength === '薄め') {
+    lastPours = [last60];
+    times = ['1:30'];
+    strengthLabel = '薄め(あっさり)';
+  } else if (strength === '標準') {
+    const p1 = Math.round((last60 / 2) / 10) * 10;
+    const p2 = last60 - p1;
+    lastPours = [p1, p2];
+    times = ['1:30', '2:30'];
+    strengthLabel = '標準';
+  } else {
+    const p1 = Math.round((last60 / 3) / 10) * 10;
+    const p2 = Math.round((last60 / 3) / 10) * 10;
+    const p3 = last60 - p1 - p2;
+    lastPours = [p1, p2, p3];
+    // 4:6メソッドのベーシックレシピどおり。後の投ほど間隔を詰め、3:30までに落ち切らせる
+    times = ['1:30', '2:10', '2:40'];
+    strengthLabel = '濃いめ(コク)';
+  }
+
+  // 累計を10g単位で四捨五入し、その差分を各投の量にする（各投も10g単位になる）。
+  // 最後の投は累計を総湯量ちょうどに合わせる（総湯量が10g単位なので最後の投も10g単位になる）。
+  const totalR = total;
+  const rawPours = [pour1, pour2, ...lastPours];
+  let cumRaw = 0, prevCum = 0;
+  const rows = rawPours.map((p, i) => {
+    cumRaw += p;
+    const isLast = i === rawPours.length - 1;
+    const cum = isLast ? totalR : Math.min(Math.round(cumRaw / 10) * 10, totalR);
+    const amount = cum - prevCum;
+    prevCum = cum;
+    return { amount, cum };
+  });
+  // 「60g(60g)」形式。桁を揃えるため投量は右寄せにする。
+  const pourCell = r => `${(r.amount + 'g').padStart(4)}(${r.cum}g)`;
+
+  // 音声ガイド用。表示と同じ数字をそのまま使う。
+  const pourSecs = ['0:00', '0:45'].concat(times).map(parseClock);
+  scheduleData = {
+    sweet, strength, total: totalR,
+    pours: rows.map((r, i) => ({ n: i + 1, at: pourSecs[i], amount: r.amount, cum: r.cum })),
+    endAt: parseClock('3:30')
+  };
+  if (guide.running) stopGuide('設定が変わったので音声ガイドを止めました');
+
+  // 見出し・注記は折り返し可、テーブルだけ等幅で桁を揃える（.sched）
+  let html = `<div><span class="header">【${style}×${strengthLabel}】</span>\n`;
+  // iPhone の幅で1行に収まるよう、空白は詰めてある（全角の「／」は字の中に余白がある）
+  html += `豆量${fmtNum(dose)}g／総湯量${totalR}g／比率1:${Math.round(ratio)}</div>`;
+
+  html += `<div class="sched">`;
+  // 文字を大きくするため列の間隔は1文字に詰めてある（2桁の湯量だけ右寄せで1文字増える）
+  // 見出しは文字を小さくしつつ、各列の上に揃える。箱の幅は表の数字の文字幅（ch）で決め、
+  // 「時間」は 0:00 の上の中央、「投」は回の数字の上の中央、「湯量」は投量（右寄せ）の上に右寄せ、「(累計)」は (60g) の頭から
+  const hc = (w, align, text) => `<span class="hc" style="width:${w}ch;justify-content:${align}"><span class="small">${text}</span></span>`;
+  html += `<div class="header tight">${hc(4, 'center', '時間')} ${hc(1, 'center', '投')} ${hc(4, 'flex-end', '湯量')}<span class="small">(累計)</span></div>`;
+  html += `<div class="rule">------------------</div>`;
+  // 各行の末尾に音声ガイドの進捗マーク（◀）を入れる場所を用意しておく
+  html += `<span class="green">0:00 1 ${pourCell(rows[0])}</span><span class="mark" id="mk0"></span>\n`;
+  html += `<span class="green">0:45 2 ${pourCell(rows[1])}</span><span class="mark" id="mk1"></span>`; // 次の行はブロックなので改行しない
+  html += `<div class="small tight"> ── 前半40% 完了 ──</div>`;
+
+  rows.slice(2).forEach((r, i) => {
+    html += `<span class="blue">${times[i]} ${i + 3} ${pourCell(r)}</span><span class="mark" id="mk${i + 2}"></span>\n`;
+  });
+
+  // 完了後も「◀ 経過時間」を付けるので、半角25文字に収まるよう間隔は1文字、「(予定)」は半角カッコの小さい文字にしてある
+  html += `<span class="orange">3:30 <span class="kanji">抽出完了</span><span class="small">(予定)</span></span><span class="mark" id="mkEnd"></span>`;
+  html += `</div>`;
+
+  clearMarks(); // 完了後の時計が残っていたら止める（表を作り直すと同じ id の行ができるため）
+
+  html += `<div class="note">推奨湯温 浅煎り93℃ /中煎り88℃ /深煎り83℃  推奨挽き中粗〜粗挽き 推奨豆比率 1:15 ${totalR}ccで${Math.round(totalR / 15)}g` +
+          `<span class="ver" data-v="${APP_VERSION}"></span></div>`;
+
+  el.innerHTML = html;
+  saveSettings(); // 有効な入力のみ保存
+}
+
+// コピーは3段構え。
+//  ① Clipboard API … secure context（https / localhost）が必要
+//  ② execCommand('copy') … 画面に出ている textarea を選択して実行
+//  ③ その textarea を残して、長押し→コピーしてもらう
+//
+// ①が「拒否」された場合は Promise の非同期コールバックに入るため、
+// そこではユーザー操作の資格が切れていて②を試しても必ず失敗する。よって直接③へ送る。
+function copyResult() {
+  // 音声ガイド中の進捗マークはコピーに含めない
+  const text = document.getElementById('result').innerText.replace(/ ◀/g, '');
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    // ユーザー操作直後に同期的に呼ぶ（iOS はこれを外すと拒否される）
+    navigator.clipboard.writeText(text).then(
+      () => { hideManual(); showToast('コピーしました'); },
+      (err) => showManual(text, 'clipboard API が拒否 (' + errName(err) + ')')
+    );
+    return;
+  }
+
+  // ①が無い環境。ユーザー操作中のうちに②を同期実行する。
+  legacyCopy(text);
+}
+
+function errName(err) {
+  return (err && (err.name || err.message)) || '理由不明';
+}
+
+// iOS は画面に出ていない要素からのコピーを拒否することがあるため、
+// 手動コピー欄の textarea をいったん表示し、それを選択して実行する。
+function legacyCopy(text) {
+  const ta = showManual(text, null, true);
+
+  if (execCopy(ta, text)) {
+    hideManual();
+    showToast('コピーしました');
+    return;
+  }
+  setManualReason('自動コピーが効きませんでした');
+  focusManual(ta);
+  showToast('長押しして「コピー」を選んでください', 3500);
+}
+
+// execCommand は「実行できた」だけで true を返し、選択が空なら中身が空のままコピーされる。
+// そこで copy イベントを捕まえ、(1) 中身をプレーンテキストで確定させ、
+// (2) イベントが発火したかどうかを成功判定に使う。
+function execCopy(ta, text) {
+  let fired = false;
+  const onCopy = (e) => {
+    if (!e.clipboardData) return;
+    e.clipboardData.setData('text/plain', text); // 選択内容に関係なく本文を書き込む
+    e.preventDefault();
+    fired = true;
+  };
+  document.addEventListener('copy', onCopy);
+
+  const prevReadOnly = ta.readOnly;
+  let ret = false;
+  try {
+    // iOS は readOnly のままだと選択範囲が確定しない。
+    // キーボードは inputmode="none" で抑止している。
+    ta.readOnly = false;
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, 999999);
+    ret = document.execCommand('copy');
+  } catch (e) {
+    ret = false;
+  } finally {
+    ta.readOnly = prevReadOnly;
+    document.removeEventListener('copy', onCopy);
+  }
+  return ret && fired;
+}
+
+// 結果欄を直接選択させると HTML／webarchive フレーバーが載って書式付きで貼られるため、
+// 書式を持たない textarea に入れ直してから選択させる。
+function showManual(text, reason, quiet) {
+  const ta = document.getElementById('manualText');
+  ta.value = text;
+  document.getElementById('manual').hidden = false;
+  void ta.offsetHeight; // 表示を確定させてから選択する
+
+  setManualReason(reason || '');
+  if (!quiet) {
+    focusManual(ta);
+    showToast('長押しして「コピー」を選んでください', 3500);
+  }
+  return ta;
+}
+
+function focusManual(ta) {
+  ta.focus();
+  try { ta.setSelectionRange(0, ta.value.length); } catch (e) { /* noop */ }
+}
+
+function setManualReason(msg) {
+  document.getElementById('manualReason').textContent = msg ? '自動コピー不可: ' + msg + diagInfo() : '';
+}
+
+// 実機で何が起きているか分かるように環境を併記する
+function diagInfo() {
+  return ' ／ secure=' + window.isSecureContext +
+         ' ／ clipboard=' + !!(navigator.clipboard && navigator.clipboard.writeText) +
+         ' ／ ' + location.protocol;
+}
+
+function hideManual() {
+  document.getElementById('manual').hidden = true;
+}
+
+/* ============================================================
+   音声ガイド
+   ・読み上げ: Web Speech API / カウント音: Web Audio
+   ・カウント音は毎秒の水滴の音（ドリッパーからサーバーに落ちる音）、各回の3秒前から「ピッ・ピッ・ピッ・ピー」
+   ・iOS は最初の発話がタップ操作の中で起きないと音が出ないため、
+     開始ボタンを押した瞬間に1回目を喋らせて解禁する。
+   ・時刻判定は開始時刻からの経過秒で行う。setTimeout の数珠つなぎだと
+     誤差が積み上がるうえ、iOS では間引かれてズレるため。
+   ============================================================ */
+const guide = { running: false, timer: null, ctx: null, t0: 0, ctxT0: 0, sounds: [], events: [], markTimer: null };
+const MARK_HOLD_MS = 60 * 1000; // 抽出完了後、◀ と時計を残しておく時間
+let jaVoice = null;
+
+function pickJaVoice() {
+  try {
+    const vs = speechSynthesis.getVoices() || [];
+    jaVoice = vs.find(v => /^ja/i.test(v.lang)) || null;
+  } catch (e) { jaVoice = null; }
+}
+if (window.speechSynthesis) {
+  pickJaVoice();
+  speechSynthesis.onvoiceschanged = pickJaVoice; // 端末によっては遅れて揃う
+}
+
+function parseClock(s) {
+  const [m, sec] = s.split(':').map(Number);
+  return m * 60 + sec;
+}
+
+// 「1投目」は「いちいんちめ」と読み違えられるため「1回目」を使う（いっかいめ と読まれる）。
+// 語尾を上げる「？」は付けない（ユーザー要望）。
+function pourWord(n) {
+  return `${n}回目。`;
+}
+
+// 45 → 「45秒」、90 → 「1分30秒」、180 → 「3分」
+function jaTime(sec) {
+  const m = Math.floor(sec / 60), s = sec % 60;
+  if (m === 0) return `${s}秒`;
+  return s === 0 ? `${m}分` : `${m}分${s}秒`;
+}
+
+function speak(text, onDone) {
+  if (!window.speechSynthesis) { if (onDone) onDone(); return; }
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.pitch = 1.25; // 声を高めにして、かわいく（ユーザー要望）。1 が標準、0〜2
+    if (jaVoice) u.voice = jaVoice;
+    if (onDone) {
+      let done = false;
+      const finish = () => { if (!done) { done = true; onDone(); } };
+      u.onend = finish;
+      u.onerror = finish;
+      // onend が発火しない端末があるので、読み上げ時間の上限で保険をかける
+      setTimeout(finish, Math.max(3000, text.length * 220));
+    }
+    speechSynthesis.speak(u);
+  } catch (e) {
+    if (onDone) onDone();
+  }
+}
+
+// 毎秒の音の予定表。各回の3秒前から「ピッ・ピッ・ピッ・ピー」、残りの秒は小さめの水滴の音。
+// 先頭は1回目の3秒前（-3秒）、最後は抽出完了の水滴の音。
+function buildSounds(sd) {
+  const kind = new Map();
+  sd.pours.forEach(p => {
+    for (let i = 3; i >= 1; i--) kind.set(p.at - i, 'pi');
+    kind.set(p.at, 'pii');
+  });
+  const list = [];
+  for (let s = sd.pours[0].at - 3; s <= sd.endAt; s++) list.push({ at: s, kind: kind.get(s) || 'tick' });
+  return list;
+}
+
+// 予定表のうち1秒先までを ctx の時刻で予約する。ピッも水滴の音も同じ ctx の時計に乗るので
+// 間隔が正確に揃う。時間を過ぎてしまった音（裏に回っていた間など）は鳴らさずに捨てる。
+function scheduleSounds() {
+  const ctx = guide.ctx;
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  while (guide.sounds.length && guide.ctxT0 + guide.sounds[0].at <= now + 1) {
+    const s = guide.sounds.shift(), when = guide.ctxT0 + s.at;
+    if (when < now - 0.05) continue;
+    if (s.kind === 'pi') beep(when, 880, 0.12);
+    else if (s.kind === 'pii') beep(when, 1320, 0.55);
+    else tick(when);
+  }
+}
+
+// 毎秒の音。高めで澄んだ水滴の音。
+// デスクトップのサンプル「06-H4_当たる音＋泡_かなり高い＋当たる音も高め（上下1%）」で決まった音（ユーザー選択）。
+//   当たる音 … 水面に当たる一瞬の「チッ」（5kHz より上の雑音・約4ms）
+//   泡の音   … 落ちた滴が水中に作る泡が震える音。van den Doel の泡モデルで、
+//              減衰する正弦波の音程が f0(1 + ξ·d·t) と少し上がる（f0 2300Hz・ξ 0.15）
+//   出口     … 部屋の響き（1.2秒。サンプル「E2_響きを長く」で決定）を足す
+// 音量は v1.40 と平均の大きさ（RMS）で合わせた 0.18 から、ユーザー要望で 0.09 → 0.045 と下げた。
+const DRIP_GAIN = 0.045;
+let noiseBuf = null;
+function tick(when) {
+  const ctx = guide.ctx;
+  if (!ctx) return;
+  const out = dripBus(ctx);
+
+  if (!noiseBuf || noiseBuf.sampleRate !== ctx.sampleRate) {
+    noiseBuf = ctx.createBuffer(1, Math.round(ctx.sampleRate * 0.01), ctx.sampleRate);
+    const d = noiseBuf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  }
+  const src = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), g = ctx.createGain();
+  src.buffer = noiseBuf;
+  hp.type = 'highpass';
+  hp.frequency.value = 5000;
+  g.gain.setValueAtTime(0.4 * DRIP_GAIN, when);
+  g.gain.exponentialRampToValueAtTime(0.0001 * DRIP_GAIN, when + 0.004);
+  src.connect(hp); hp.connect(g); g.connect(out);
+  src.start(when);
+  src.stop(when + 0.006);
+
+  // 泡の音程は1滴ごとに上下1%だけ揺らす（毎回まったく同じだと機械的に聞こえる）
+  bubble(ctx, when + 0.008, 2300 * (0.99 + Math.random() * 0.02), 0.15, 0.5 * DRIP_GAIN, out);
+}
+
+// 泡の音。d は減衰の速さ（1/秒）で、泡が大きい（音が低い）ほどゆっくり消える
+function bubble(ctx, when, f0, xi, peak, out) {
+  const d = 0.043 * f0 + 0.0014 * Math.pow(f0, 1.5), len = 6 / d; // len でほぼ消える
+  const osc = ctx.createOscillator(), gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(f0, when);
+  osc.frequency.linearRampToValueAtTime(f0 * (1 + xi * d * len), when + len);
+  gain.gain.setValueAtTime(0, when);
+  gain.gain.linearRampToValueAtTime(peak, when + 0.001);
+  gain.gain.setTargetAtTime(0, when + 0.001, 1 / d);
+  osc.connect(gain); gain.connect(out);
+  osc.start(when);
+  osc.stop(when + len + 0.01);
+}
+
+// 水滴の音の出口。ctx ごとに1つ作って使い回す（ガイドを始めるたびに ctx は作り直される）
+function dripBus(ctx) {
+  if (ctx.dripBus) return ctx.dripBus;
+  const input = ctx.createGain();
+  input.connect(ctx.destination);
+
+  // 部屋の響き: 1.2秒で消えていく雑音を畳み込む
+  const len = Math.round(ctx.sampleRate * 1.2), ir = ctx.createBuffer(2, len, ctx.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = ir.getChannelData(ch);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+  }
+  const conv = ctx.createConvolver(), wet = ctx.createGain();
+  conv.buffer = ir;
+  wet.gain.value = 0.9;
+  input.connect(conv); conv.connect(wet); wet.connect(ctx.destination);
+
+  ctx.dripBus = input;
+  return input;
+}
+
+function beep(when, freq, dur, peak) {
+  const ctx = guide.ctx;
+  if (!ctx) return;
+  const osc = ctx.createOscillator(), gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, when);
+  gain.gain.exponentialRampToValueAtTime(peak || 0.6, when + 0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001, when + dur);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(when);
+  osc.stop(when + dur + 0.05);
+}
+
+function toggleGuide() {
+  if (guide.running) { stopGuide(); return; }
+  startGuide();
+}
+
+function startGuide() {
+  const sd = scheduleData;
+  if (!sd) { showToast('先に豆の量と総湯量を入力してください'); return; }
+
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    guide.ctx = new AC();
+    guide.ctx.resume();
+  } catch (e) {
+    guide.ctx = null; // 音が出なくても読み上げだけは続ける
+  }
+
+  addHistory();
+  guide.running = true;
+  clearMarks(); // 前回の抽出終了マークが残っているので消す
+  setGuideBtn(true);
+  syncWakeLock();
+
+  const first = sd.pours[0];
+  // 「淹れ方」は「えんれほう」と読まれてしまうのでひらがなにする。
+  // 体言止めで話す（開始の「いれかたです」「お湯は…グラムです」「スタートします」だけは丁寧に）。語尾を上げる「？」は付けない（ユーザー要望）
+  const intro = `「${sd.sweet}」、「${sd.strength}」の、いれかたです。お湯は${sd.total}グラムです。` +
+                `${pourWord(first.n)}スタートします。${first.amount}グラム。`;
+  // 読み上げが終わってからカウントダウン。「ピー」の瞬間が0秒。
+  speak(intro, () => { if (guide.running) beginTimeline(sd); });
+}
+
+function beginTimeline(sd) {
+  const lead = 0.4;
+  guide.t0 = Date.now() + (lead + 3) * 1000;
+  guide.sounds = buildSounds(sd);
+  if (guide.ctx) guide.ctxT0 = guide.ctx.currentTime + lead + 3;
+  scheduleSounds();
+
+  guide.events = [];
+  // 各投の時刻ちょうど（「ピー」の瞬間）に ◀ をその行へ移す
+  sd.pours.forEach((p, i) => {
+    guide.events.push({ at: p.at, fn: () => setMark('mk' + i) });
+  });
+  sd.pours.slice(1).forEach(p => {
+    guide.events.push({ at: p.at - 9, fn: () =>
+      speak(`${pourWord(p.n)}${jaTime(p.at)}。${p.amount}グラム、累計${p.cum}グラム。`) });
+  });
+  guide.events.push({ at: sd.endAt, fn: () => {
+    setMark('mkEnd'); // 完了後も時計は進め続け、MARK_HOLD_MS 後に消す（stopGuide 後は tickMark が引き継ぐ）
+    speak(`${jaTime(sd.endAt)}。抽出完了予定時間です。`);
+  } });
+  guide.events.sort((a, b) => a.at - b.at);
+
+  guide.endAt = sd.endAt;
+  guide.timer = setInterval(tickGuide, 200);
+}
+
+function tickGuide() {
+  const elapsed = elapsedSec();
+  scheduleSounds();
+  while (guide.events.length && guide.events[0].at <= elapsed) {
+    guide.events.shift().fn();
+  }
+  updateMark(elapsed);
+  // 最後まで流れきった場合は「抽出完了」の ◀ と時計を残したまま終わる
+  if (elapsed > guide.endAt + 5) stopGuide(null, true);
+}
+
+// ガイド終了後、「抽出完了」の時計だけを進める。消す時刻も経過秒で判定する。
+function tickMark() {
+  const elapsed = elapsedSec();
+  if (elapsed >= guide.endAt + MARK_HOLD_MS / 1000) clearMarks();
+  else updateMark(elapsed);
+}
+
+function updateMark(elapsed) {
+  if (!guide.markId) return;
+  const el = document.getElementById(guide.markId);
+  if (el) el.textContent = ' ◀ ' + mmss(elapsed);
+}
+
+function stopGuide(msg, keepMark) {
+  guide.running = false;
+  clearInterval(guide.timer);
+  guide.timer = null;
+  guide.events = [];
+  guide.sounds = [];
+  try { speechSynthesis.cancel(); } catch (e) { /* noop */ }
+  if (guide.ctx) { try { guide.ctx.close(); } catch (e) { /* noop */ } guide.ctx = null; }
+  if (!keepMark) clearMarks();
+  else if (guide.markId) {
+    clearInterval(guide.markTimer);
+    guide.markTimer = setInterval(tickMark, 200);
+  }
+  setGuideBtn(false);
+  syncWakeLock(); // 完了後の時計が出ている間は持ち続ける
+  if (msg) showToast(msg);
+}
+
+// 進捗マークは1か所だけ。表示中のものを消してから付け替える。
+function setMark(id) {
+  clearMarks();
+  const el = document.getElementById(id);
+  if (!el) return;
+  guide.markId = id;
+  updateMark(elapsedSec());
+}
+
+function clearMarks() {
+  clearInterval(guide.markTimer); // 完了後の時計が動いていたら止める
+  guide.markTimer = null;
+  guide.markId = null;
+  const marks = document.querySelectorAll('.result .mark');
+  for (let i = 0; i < marks.length; i++) marks[i].textContent = '';
+  syncWakeLock();
+}
+
+function elapsedSec() {
+  return (Date.now() - guide.t0) / 1000;
+}
+
+function mmss(sec) {
+  const s = Math.max(0, Math.floor(sec));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
+function setGuideBtn(running) {
+  const b = document.getElementById('guideBtn');
+  b.textContent = running ? '音声ガイド停止' : '音声ガイド開始';
+  b.classList.toggle('running', running);
+}
+
+/* ============================================================
+   画面を消さない（Screen Wake Lock）
+   あるべき状態 = 動作中（音声ガイド中、または抽出完了後の時計が出ている間）。
+   取得と解放は syncWakeLock() だけで行う。画面が裏に回るとブラウザが勝手に
+   解放するので、戻った時に取り直す。https で開いたときだけ有効。
+   ============================================================ */
+let wakeLock = null;
+let wakeRequesting = false;
+let notifiedWakeUnsupported = false;
+
+function syncWakeLock() {
+  const want = (guide.running || !!guide.markTimer) && document.visibilityState === 'visible';
+  const held = wakeLock && !wakeLock.released;
+  if (want === !!held) return;
+  if (!want) {
+    const w = wakeLock;
+    wakeLock = null;
+    if (w) w.release().catch(() => {});
+    return;
+  }
+  if (wakeRequesting) return;
+  if (!('wakeLock' in navigator)) {
+    if (!notifiedWakeUnsupported) {
+      notifiedWakeUnsupported = true;
+      showToast('この端末では画面の自動消灯を止められません');
+    }
+    return;
+  }
+  wakeRequesting = true;
+  navigator.wakeLock.request('screen').then(w => {
+    wakeRequesting = false;
+    wakeLock = w;
+    syncWakeLock(); // 取得中に止められていたら即座に手放す
+  }, () => {
+    wakeRequesting = false;
+  });
+}
+document.addEventListener('visibilitychange', syncWakeLock);
+
+loadSettings(); // 前回の設定を復元
+calc();         // 初期表示
+</script>
+
+<script>
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => { /* 未対応でも本体は動く */ });
+    });
+  }
+</script>
+</body>
+</html>
