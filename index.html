@@ -304,7 +304,7 @@
       </div>
       <div>
         <label for="dose">豆量</label>
-        <input type="number" id="dose" value="20" min="1" step="0.5" inputmode="decimal" oninput="calc()">
+        <input type="number" id="dose" value="20" min="1" step="0.5" inputmode="decimal" oninput="calc()" onchange="normalizeDose()">
       </div>
       <div>
         <label for="sweet">味わい</label>
@@ -350,7 +350,7 @@
 <div class="toast" id="toast">コピーしました</div>
 
 <script>
-const APP_VERSION = 'v1.61'; // 画面の注記の右端に出す。変更してサーバに上げるたびに進める
+const APP_VERSION = 'v1.63'; // 画面の注記の右端に出す。変更してサーバに上げるたびに進める
 const STORAGE_KEY = 'coffee46.settings.v1';
 const DEFAULTS = { dose: '20', total: '300', sweet: 'バランス', strength: '標準' };
 let scheduleData = null; // 直近の計算結果。音声ガイドがこれを読む
@@ -474,8 +474,20 @@ function roundTotal(v) {
 // 入力中に書き換えると打鍵を邪魔するので oninput ではやらない。
 function normalizeTotal() {
   const el = document.getElementById('total');
-  const r = roundTotal(el.value);
+  let r = roundTotal(el.value);
+  // 空のまま確定したら、豆量から 1:15 で埋める（10g 単位、ユーザー要望 v1.62）
+  if (el.value.trim() === '') r = roundTotal((parseFloat(document.getElementById('dose').value) || 0) * 15);
   if (r > 0) el.value = r;
+  calc();
+}
+
+// 豆量を空のまま確定したら、湯量から 1:15 で埋める（1g 単位、ユーザー要望 v1.62）
+function normalizeDose() {
+  const el = document.getElementById('dose');
+  if (el.value.trim() === '') {
+    const total = roundTotal(document.getElementById('total').value);
+    if (total > 0) el.value = Math.max(1, Math.round(total / 15));
+  }
   calc();
 }
 

@@ -1,7 +1,7 @@
 // オフライン用のごく小さなサービスワーカー。
 // 初回アクセス時に本体と画像を保存し、以降はネットワークを試してから保存分にフォールバックする。
 // サーバに届かない時は失敗せず応答待ちになることがあるので、一定時間で見切る。
-const CACHE = 'coffee46-v3';
+const CACHE = 'coffee46-v4';
 const ASSETS = ['index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 const NETWORK_TIMEOUT_MS = 3000;
 
@@ -26,7 +26,9 @@ function fromCache(req) {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  const network = fetch(e.request).then(res => {
+  // ブラウザの HTTP キャッシュを使わず毎回サーバに確かめる（GitHub Pages は 10 分キャッシュさせ、更新が届くのが遅れるため。
+  // 変わっていなければ 304 で済む）
+  const network = fetch(e.request, { cache: 'no-cache' }).then(res => {
     if (res.ok) {
       const copy = res.clone();
       caches.open(CACHE).then(c => c.put(e.request, copy));
